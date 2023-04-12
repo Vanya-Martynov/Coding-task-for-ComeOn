@@ -12,6 +12,13 @@ const initialState = {
     filteredGames: [],
 };
 
+const filterGames = (games, name, category) => {
+    return games.filter(
+        el => (!name || el.name.toLowerCase().indexOf(name.toLowerCase()) !== -1)
+            && el.categoryIds.some(id => category === id)
+    );
+}
+
 export default function GamesReducer(state = initialState, action) {
     const { type, payload } = action;
 
@@ -30,12 +37,9 @@ export default function GamesReducer(state = initialState, action) {
             return {
                 ...state,
                 gamesFilter: filterWithNewCategory,
-                filteredGames: state.games.filter(el => {
-                    return (!filterWithNewCategory.name || el.name.toLowerCase().indexOf(filterWithNewCategory.name.toLowerCase()) !== -1) && el.categoryIds.some(id => filterWithNewCategory.category === id)
-                })
+                filteredGames: filterGames(state.games, filterWithNewCategory.name, filterWithNewCategory.category)
             }
         case SET_GAME_NAME:
-            
             const filterWithNewName = {
                 ...state.gamesFilter,
                 name: payload
@@ -43,9 +47,7 @@ export default function GamesReducer(state = initialState, action) {
             return {
                 ...state,
                 gamesFilter: filterWithNewName,
-                filteredGames: state.games.filter(el => {
-                    return (!filterWithNewName.name || el.name.toLowerCase().indexOf(filterWithNewName.name.toLowerCase()) !== -1) && el.categoryIds.some(id => filterWithNewName.category === id)
-                })
+                filteredGames: filterGames(state.games, filterWithNewCategory.name, filterWithNewCategory.category)
             }
         default:
             return state;

@@ -16,8 +16,8 @@ export default function GameItem({ icon = "", name, description, code, launch })
                 <div className="description">
                     {description}
                 </div>
-                <div className="extra" onClick={launchGame}>
-                    <div className="play ui right floated secondary button inverted">
+                <div className="extra">
+                    <div className="play ui right floated secondary button inverted" onClick={launchGame}>
                         Play
                         <i className="right chevron icon"></i>
                     </div>
