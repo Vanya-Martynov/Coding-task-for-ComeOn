@@ -26,7 +26,7 @@ export default function Casino() {
         <div className="ui grid centered">
             <div className="twelve wide column">
                 <div className="ui list">
-                    <PlayerProfile icon={"eric"} name={user.player.name} eventName={user.player.event}></PlayerProfile>
+                    <PlayerProfile icon={user.player.avatar} name={user.player.name} eventName={user.player.event}></PlayerProfile>
                 </div>
                 <LogOut></LogOut>
             </div>

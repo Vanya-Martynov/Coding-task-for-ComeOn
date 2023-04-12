@@ -32,8 +32,7 @@ export default function GameList() {
 
         <div className="ui relaxed divided game items links">
             {filteredGames && filteredGames.map(el => {
-                const key = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-                return <GameItem name={el.name} description={el.description} icon={el.icon} key={key} code={el.code} launch={launch}></GameItem>
+                return <GameItem name={el.name} description={el.description} icon={el.icon} key={el.id} code={el.code} launch={launch}></GameItem>
             })}
         </div>
     </>

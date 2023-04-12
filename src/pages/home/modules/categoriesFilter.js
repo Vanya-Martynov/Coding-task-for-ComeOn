@@ -10,8 +10,7 @@ export default function CategoriesFilter({ name, id }) {
         <div className="ui selection animated list category items">
 
             { categories && categories.map(el => {
-                const key = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-                return <CategoriesItem id={el.id} name={el.name} key={ key }></CategoriesItem>
+                return <CategoriesItem id={el.id} name={el.name} key={ el.id }></CategoriesItem>
             }) }
 
         </div>
